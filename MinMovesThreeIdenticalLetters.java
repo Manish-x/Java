@@ -17,6 +17,9 @@ public class MinMovesThreeIdenticalLetters {
                 // Always swap the third character to simplify logic
                 chars[i + 2] = (chars[i + 2] == 'a') ? 'b' : 'a';
                 moves++;
+
+                // Skip the next two characters to avoid reprocessing the same triplet
+                i += 2;
             }
         }
 
