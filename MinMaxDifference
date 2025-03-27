@@ -1,0 +1,76 @@
+import java.util.Arrays;
+
+public class MinMaxDifference {
+
+    // Function to determine the minimum possible maximum difference
+    public static int solution(int[] A) {
+        int n = A.length;
+
+        // Edge case: If the array has fewer than 3 elements, return 0
+        if (n < 3) {
+            return 0;
+        }
+
+        // Sort the array to facilitate grouping
+        Arrays.sort(A);
+
+        // Binary search for the minimum possible maximum difference
+        int low = 0;
+        int high = A[n - 1] - A[0];
+        int result = high;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            // Check if it's possible to divide the array into 3 groups with max difference <= mid
+            if (canDivideIntoGroups(A, mid)) {
+                result = mid; // Update the result
+                high = mid - 1; // Try to minimize the difference further
+            } else {
+                low = mid + 1; // Increase the allowed difference
+            }
+        }
+
+        return result;
+    }
+
+    // Helper function to check if the array can be divided into 3 groups with max difference <= mid
+    private static boolean canDivideIntoGroups(int[] A, int maxDiff) {
+        int groups = 1; // Start with one group
+        int prev = A[0]; // Track the smallest element in the current group
+
+        for (int i = 1; i < A.length; i++) {
+            // If the current element exceeds the allowed difference, start a new group
+            if (A[i] - prev > maxDiff) {
+                groups++;
+                prev = A[i]; // Update the smallest element of the new group
+            }
+        }
+
+        // Return true if we have at most 3 groups
+        return groups <= 3;
+    }
+
+    // Test function to verify the solution
+    public static void testSolution() {
+        // Test Case 1
+        int[] A1 = {11, 5, 3, 12, 6, 8, 1, 7, 4};
+        System.out.println("Test Case 1: " + (solution(A1) == 3 ? "Passed" : "Failed"));
+
+        // Test Case 2
+        int[] A2 = {10, 14, 12, 1000, 11, 15, 13, 1};
+        System.out.println("Test Case 2: " + (solution(A2) == 5 ? "Passed" : "Failed"));
+
+        // Test Case 3
+        int[] A3 = {4, 5, 7, 10, 10, 12, 12, 12};
+        System.out.println("Test Case 3: " + (solution(A3) == 2 ? "Passed" : "Failed"));
+
+        // Test Case 4
+        int[] A4 = {5, 10, 10, 5, 5};
+        System.out.println("Test Case 4: " + (solution(A4) == 0 ? "Passed" : "Failed"));
+    }
+
+    public static void main(String[] args) {
+        testSolution();
+    }
+}
