@@ -40,3 +40,38 @@ public int solution(String S) {
     
     return moves;
 }
+
+public class TestSolution {
+
+    public static void main(String[] args) {
+        // Create an instance of your solution class
+        Solution solution = new Solution();
+
+        // Define test cases
+        String[] testInputs = {
+            "baaaaa", "baaabbaabbba", "baabab", "aaa", "bbb", "ababab", "", "a", "aa",
+            "aaaaaa", "bbbbbb", "abababababab", "aaaaaabbbbbb", "aaabbb", "aaaabbbb",
+            "aaaaa", "bbbbb", "aaaaaaaaaaaa"
+        };
+
+        int[] expectedOutputs = {
+            1, 2, 0, 1, 1, 0, 0, 0, 0,
+            2, 2, 0, 4, 0, 2,
+            2, 2, 4
+        };
+
+        // Run test cases
+        for (int i = 0; i < testInputs.length; i++) {
+            String input = testInputs[i];
+            int expected = expectedOutputs[i];
+            int result = solution.solution(input);
+
+            // Print results
+            System.out.println("Input: \"" + input + "\"");
+            System.out.println("Expected Output: " + expected);
+            System.out.println("Actual Output: " + result);
+            System.out.println(result == expected ? "✅ Test Passed" : "❌ Test Failed");
+            System.out.println();
+        }
+    }
+}
