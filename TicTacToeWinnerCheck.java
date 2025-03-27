@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * Codility Question: Tic Tac Toe Winner
+ * Tic Tac Toe Winner
  * 
  * Task: Determine if there's a winner in a Tic Tac Toe game.
  * 
