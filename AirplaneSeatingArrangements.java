@@ -92,3 +92,70 @@ public int solution(int N, String S) {
     
     return totalFamilies;
 }
+
+/**
+ * Tests the solution with various test cases.
+ * Simply call this method to run all tests and verify the solution.
+ */
+public static void testSolution() {
+    // Create an instance to call the non-static solution method
+    // If your solution method is static, you can remove this and call it directly
+    Solution solver = new Solution();
+    
+    // Test cases with expected results
+    int[][] testCases = {
+        // {N, expected result, testCase number}
+        {2, 2, 1},     // Test case 1: Example from problem statement
+        {3, 6, 2},     // Test case 2: Empty plane
+        {3, 3, 3},     // Test case 3: One seat occupied in each row
+        {2, 0, 4},     // Test case 4: Multiple seats occupied in same row
+        {1, 1, 5},     // Test case 5: Edge case - specific arrangements
+        {2, 4, 6}      // Test case 6: Invalid seat specifications
+    };
+    
+    // Reserved seats for each test case
+    String[] reservedSeats = {
+        "1A 2F 1C",         // Test case 1
+        "",                  // Test case 2
+        "1E 2B 3H",          // Test case 3
+        "1B 1E 1H 2C 2G",    // Test case 4
+        "1F",                // Test case 5
+        "1Z 2X"              // Test case 6
+    };
+    
+    // Run each test case
+    int passedTests = 0;
+    for (int i = 0; i < testCases.length; i++) {
+        int N = testCases[i][0];
+        int expected = testCases[i][1];
+        int testCaseNum = testCases[i][2];
+        String S = reservedSeats[i];
+        
+        int actual = solver.solution(N, S);
+        boolean passed = (actual == expected);
+        
+        System.out.println("Test Case " + testCaseNum + ": " + 
+                           (passed ? "PASSED" : "FAILED") + 
+                           " (Expected: " + expected + ", Got: " + actual + ")");
+        System.out.println("  N = " + N + ", Reserved Seats = \"" + S + "\"");
+        
+        if (!passed) {
+            System.out.println("  ERROR: Expected " + expected + " but got " + actual);
+        }
+        
+        if (passed) {
+            passedTests++;
+        }
+        
+        System.out.println(); // Empty line for better readability
+    }
+    
+    // Summary
+    System.out.println("Summary: " + passedTests + " out of " + testCases.length + " tests passed.");
+    
+    if (passedTests == testCases.length) {
+        System.out.println("All tests passed! The solution appears to be correct.");
+    } else {
+        System.out.println("Some tests failed. Please review the solution.");
+    }
+}
