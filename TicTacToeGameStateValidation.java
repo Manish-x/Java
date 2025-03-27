@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * Codility Question: Tic Tac Toe Game State Validation
+ * Tic Tac Toe Game State Validation
  * 
  * Task: Check if a given Tic Tac Toe board represents a valid game state.
  * 
