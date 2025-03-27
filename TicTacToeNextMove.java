@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * Codility Question: Tic Tac Toe Next Best Move
+ * Tic Tac Toe Next Best Move
  * 
  * Task: Find the best next move for player 'X' in a Tic Tac Toe game.
  * 
