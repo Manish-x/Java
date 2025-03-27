@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MinMaxDifference {
+public class ThreeWayArrayDivision {
 
     // Function to determine the minimum possible maximum difference
     public static int solution(int[] A) {
